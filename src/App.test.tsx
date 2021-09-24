@@ -25,4 +25,37 @@ describe('App', () => {
     const element = await screen.findByTestId("answer-label");
     expect(element).toBeInTheDocument();
   })
+
+  /*
+
+  it("has the Add New Card Button", () => {
+    const element = screen.getByText("Add New Card");
+
+    expect(element).toBeInTheDocument();
+  })
+
+  */
+
+  it("shows the modal on button add card click", async () => {
+  const button = screen.getByText("Add new card");
+
+  button.click();
+  const header = await screen.getByText("Add New Card");
+  expect(header).toBeInTheDocument();
+
+  })
+
+  it("has the prompt section in the modal", async () =>{
+    const button = screen.getByText("Add new card");
+
+    button.click();
+    let newPrompt:string = "testing adding a prompt";
+    let newSugges:string = "testing adding a suggestion";
+    let promptArea = await screen.getByTestId("prompt");
+    promptArea.innerHTML = newPrompt;
+    let suggesArea = await screen.getByText("Suggested Answer");
+    suggesArea.innerText = newSugges;
+    const saver = await screen.getByText("Close");
+    expect(saver).toBeInTheDocument();
+  })
 })

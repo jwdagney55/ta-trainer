@@ -16,7 +16,6 @@ export function AddCardModal({visible, setVisible, addCard}:
       });
       setVisible(false);
     }
-
     const hide = () => setVisible(false);
     return (
     <Modal show={visible} onHide={hide}>
@@ -27,7 +26,7 @@ export function AddCardModal({visible, setVisible, addCard}:
       <Modal.Body>
       <Form>
         <Form.Group className="mb-3" controlId="addCardForm.promptTextArea">
-          <Form.Label>Prompt</Form.Label>
+          <Form.Label data-testid = "prompt">Prompt</Form.Label>
           <Form.Control as="textarea" rows={3}
             value={prompt}
             onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setPrompt(ev.target.value)}/>
